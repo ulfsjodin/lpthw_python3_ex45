@@ -25,8 +25,10 @@ class Engine(object):
 
         while current_scene != last_scene:
             next_scene_name = current_scene.enter()
-            current_scene = self.scene_map.next_scene(next_scene_name)
-            
+            current_scene = self.scene_map.next_scene(next_scene_name)   
+            # Här tror jag att jag ska sätta in något som tar mig tillbaka till föregående namn.
+            previous_scene = self.scene_map.next_scene(scener[-2])
+
             scener.append(next_scene_name)
             print(scener[-2], 'föregående')
             print(next_scene_name, 'nuvarande\n')
