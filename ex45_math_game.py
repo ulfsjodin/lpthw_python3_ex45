@@ -21,14 +21,16 @@ class Engine(object):
     def play(self):
         current_scene = self.scene_map.opening_scene()
         last_scene = self.scene_map.next_scene('eqvation')
+        
+        #Är det här det ska in?
         scener = ['','',]
+        previous_scene = self.scene_map.next_scene(scener[-2])
 
         while current_scene != last_scene:
             next_scene_name = current_scene.enter()
             current_scene = self.scene_map.next_scene(next_scene_name)   
-            # Här tror jag att jag ska sätta in något som tar mig tillbaka till föregående namn.
-            previous_scene = self.scene_map.next_scene(scener[-2])
-
+            
+            #Eller här?
             scener.append(next_scene_name)
             print(scener[-2], 'föregående')
             print(next_scene_name, 'nuvarande\n')
@@ -36,7 +38,8 @@ class Engine(object):
         current_scene.enter()
 
 
-class Plus(Hall):
+class Plus(Hall, Engine):
+    """Kanske det är här? Men någon extra funktion?"""
 
     def enter(self):
 #        print('Plus')
@@ -81,7 +84,7 @@ class Map(object):
 
     rum = {
             'hallen' : Hall(),
-            'plus' : Plus(),
+            'plus' : Plus('hall'),
             'minus' : Minus(),
             'multiply' : Multiply(),
             'divide' : Divide(),
@@ -96,6 +99,10 @@ class Map(object):
     def next_scene(self, scene_name):
         hej = Map.rum.get(scene_name)
         return hej
+
+    # Kanske man ska börja här i Map?
+    def previous_scene(self):
+        pass
 
     def opening_scene(self):
         pass
