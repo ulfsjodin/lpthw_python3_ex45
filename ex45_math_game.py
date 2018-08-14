@@ -22,12 +22,16 @@ class Engine(object):
         current_scene = self.scene_map.opening_scene()
         last_scene = self.scene_map.next_scene('eqvation')
         
-        #Är det här det ska in?
-        scener = ['','',]
+        #På något sätt fungerar previous_scene också.
+        #scener kan dock inte vara tom
+        #Njae. man kan skriva vad som helst.
+        scener = ['multiply','hallen',]
         previous_scene = self.scene_map.next_scene(scener[-2])
 
         while current_scene != last_scene:
-            next_scene_name = current_scene.enter()
+#            next_scene_name = current_scene.enter()
+            #vad händer av det här "inlägget"??
+            next_scene_name = previous_scene.enter()
             current_scene = self.scene_map.next_scene(next_scene_name)   
             
             #Eller här?
