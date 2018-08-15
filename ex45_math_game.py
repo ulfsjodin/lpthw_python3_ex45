@@ -29,10 +29,18 @@ class Engine(object):
         previous_scene = self.scene_map.next_scene(scener[-2])
 
         while current_scene != last_scene:
-#            next_scene_name = current_scene.enter()
-            #vad händer av det här "inlägget"??
-            next_scene_name = previous_scene.enter()
-            current_scene = self.scene_map.next_scene(next_scene_name)   
+            next_scene_name = current_scene.enter()
+            if next_scene_name in Map.rum:
+                pass
+                print('Map.rum')
+                current_scene = self.scene_map.next_scene(next_scene_name)   
+
+            else:
+                next_scene_name = previous_scene.enter()
+                #vad händer av det här "inlägget"??
+                print(next_scene_name, 'next_scene_name')
+#                current_scene = self.scene_map.next_scene(scener[0])
+                current_scene = self.scene_map.next_scene(scener[-1])
             
             #Eller här?
             scener.append(next_scene_name)
@@ -46,35 +54,35 @@ class Plus(Hall, Engine):
     """Kanske det är här? Men någon extra funktion?"""
 
     def enter(self):
-#        print('Plus')
+        print('Plus')
         svar = input('skriv vilket rum du vill in i :> ')
         return svar 
 
 class Minus(Hall):
 
     def enter(self):
-#        print('Minus')
+        print('Minus')
         svar = input('skriv vilket rum du vill in i :> ')
         return svar 
 
 class Multiply(Hall):
 
     def enter(self):
-#        print('Gånger') 
+        print('Gånger') 
         svar = input('skriv vilket rum du vill in i :> ')
         return svar 
 
 class Divide(Hall):
 
     def enter(self):
-#        print('Delat')
+        print('Delat')
         svar = input('skriv vilket rum du vill in i :> ')
         return svar 
 
 class Eqvation(Hall):
 
     def enter(self):
-#        print('Eqvation')
+        print('Eqvation')
         print('slut i rutan') 
 
 class Troll(Hall):
