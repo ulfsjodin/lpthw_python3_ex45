@@ -20,33 +20,22 @@ class Engine(object):
 
     def play(self):
         current_scene = self.scene_map.opening_scene()
-        last_scene = self.scene_map.next_scene('eqvation')
+        last_scene = self.scene_map.next_scene('trollen')
         
-        #På något sätt fungerar previous_scene också.
-        #scener kan dock inte vara tom
-        #Njae. man kan skriva vad som helst.
-        scener = ['multiply','hallen',]
-        previous_scene = self.scene_map.next_scene(scener[-2])
+        scener = ['','',]
 
         while current_scene != last_scene:
             next_scene_name = current_scene.enter()
             if next_scene_name in Map.rum:
-                pass
-                print('Map.rum')
                 current_scene = self.scene_map.next_scene(next_scene_name)   
+                scener.append(next_scene_name)
+                print(scener)
 
-            else:
-                next_scene_name = previous_scene.enter()
-                #vad händer av det här "inlägget"??
-                print(next_scene_name, 'next_scene_name')
-#                current_scene = self.scene_map.next_scene(scener[0])
-                current_scene = self.scene_map.next_scene(scener[-1])
+            elif next_scene_name == 'backa':
+                next_scene_name = scener[-2]
+                print(next_scene_name, 'next_scene_name_2')
+                current_scene = self.scene_map.next_scene(next_scene_name)
             
-            #Eller här?
-            scener.append(next_scene_name)
-            print(scener[-2], 'föregående')
-            print(next_scene_name, 'nuvarande\n')
-
         current_scene.enter()
 
 
@@ -54,41 +43,42 @@ class Plus(Hall, Engine):
     """Kanske det är här? Men någon extra funktion?"""
 
     def enter(self):
-        print('Plus')
+        print('Plus'.center(20, '='))
         svar = input('skriv vilket rum du vill in i :> ')
         return svar 
 
 class Minus(Hall):
 
     def enter(self):
-        print('Minus')
+        print('Minus'.center(20, '='))
         svar = input('skriv vilket rum du vill in i :> ')
         return svar 
 
 class Multiply(Hall):
 
     def enter(self):
-        print('Gånger') 
+        print('Multiply'.center(20, '='))
         svar = input('skriv vilket rum du vill in i :> ')
         return svar 
 
 class Divide(Hall):
 
     def enter(self):
-        print('Delat')
+        print('Divide'.center(20, '='))
         svar = input('skriv vilket rum du vill in i :> ')
         return svar 
 
 class Eqvation(Hall):
 
     def enter(self):
-        print('Eqvation')
-        print('slut i rutan') 
+        print('Eqvation i rutan') 
+        print('Plus'.center(20, '='))
 
 class Troll(Hall):
 
     def enter(self):
         print('Nu tog trollen dig')
+        print('Troll'.center(40, '='))
         return 'eqvation'
 
 
