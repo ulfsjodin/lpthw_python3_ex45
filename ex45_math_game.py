@@ -29,13 +29,15 @@ class Engine(object):
             if next_scene_name in Map.rum:
                 current_scene = self.scene_map.next_scene(next_scene_name)   
                 scener.append(next_scene_name)
+                print('while if')
                 print(scener)
 
-            elif next_scene_name == 'backa':
+            if next_scene_name == 'prev':
                 next_scene_name = scener[-2]
                 print(next_scene_name, 'next_scene_name_2')
                 current_scene = self.scene_map.next_scene(next_scene_name)
-            
+                current_scene.enter() 
+
         current_scene.enter()
 
 
