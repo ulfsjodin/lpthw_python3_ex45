@@ -6,8 +6,19 @@ from random import randint
 
 class Hall(object):
 
+    def uppgifter(self):
+        svar = 10
+        tal_1 = 5
+        tal_2 = 5
+        summa = tal_1 + tal_2
+        print(f'hur mycket blir {tal_1} + {tal_2}?')
+        fråga = input('summa:> ')
+        if fråga == summa:
+            print('korrekt!')
+
     def enter(self):
         print('welcome') 
+        global svar 
         svar = input('skriv vilket rum du vill in i :> ')
         return svar 
 
@@ -28,21 +39,29 @@ class Engine(object):
             next_scene_name = current_scene.enter()
             if next_scene_name in Map.rum:
                 current_scene = self.scene_map.next_scene(next_scene_name)   
+                print(current_scene, 'firsta if satsen') 
                 scener.append(next_scene_name)
-                print('while if')
+                print(next_scene_name, 'next_scene_name')
                 print(scener)
 
             if next_scene_name == 'prev':
                 next_scene_name = scener[-2]
                 print(next_scene_name, 'next_scene_name_2')
                 current_scene = self.scene_map.next_scene(next_scene_name)
-                current_scene.enter() 
+                print(current_scene, 'andra if satsen') 
+
+                print(next_scene_name, 'next_scene_name')
 
         current_scene.enter()
 
 
-class Plus(Hall, Engine):
-    """Kanske det är här? Men någon extra funktion?"""
+#class Plus(Hall, Engine):
+class Plus(Hall):
+    """Nu ska här in uppgifter att lösa.
+       Ca tolv frågor varav tio bör vara rätt.
+       slumpgeneratorn får väl vara utanför.
+       Men talen ska in här på nåt sätt"""
+
 
     def enter(self):
         print('Plus'.center(20, '='))
@@ -88,7 +107,7 @@ class Map(object):
 
     rum = {
             'hallen' : Hall(),
-            'plus' : Plus('hall'),
+            'plus' : Plus(),
             'minus' : Minus(),
             'multiply' : Multiply(),
             'divide' : Divide(),
