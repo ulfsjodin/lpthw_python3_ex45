@@ -6,15 +6,6 @@ from random import randint
 
 class Hall(object):
 
-    def uppgifter(self):
-        svar = 10
-        tal_1 = 5
-        tal_2 = 5
-        summa = tal_1 + tal_2
-        print(f'hur mycket blir {tal_1} + {tal_2}?')
-        fråga = input('summa:> ')
-        if fråga == summa:
-            print('korrekt!')
 
     def enter(self):
         print('welcome') 
@@ -62,11 +53,20 @@ class Plus(Hall):
        slumpgeneratorn får väl vara utanför.
        Men talen ska in här på nåt sätt"""
 
+    points = 0
 
     def enter(self):
         print('Plus'.center(20, '='))
-        svar = input('skriv vilket rum du vill in i :> ')
-        return svar 
+#        svar = input('skriv vilket rum du vill in i :> ')
+#        return svar 
+
+        global points 
+        fyll = int(input('skriv en siffra:> '))
+        print(type(fyll))
+        points += fyll
+        print(points)
+        if points > 32:
+            return 'hallen'
 
 class Minus(Hall):
 
@@ -122,10 +122,6 @@ class Map(object):
     def next_scene(self, scene_name):
         hej = Map.rum.get(scene_name)
         return hej
-
-    # Kanske man ska börja här i Map?
-    def previous_scene(self):
-        pass
 
     def opening_scene(self):
         pass
