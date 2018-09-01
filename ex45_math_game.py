@@ -45,6 +45,7 @@ class Engine(object):
 
         current_scene.enter()
 
+points = 0
 
 #class Plus(Hall, Engine):
 class Plus(Hall):
@@ -53,15 +54,17 @@ class Plus(Hall):
        slumpgeneratorn får väl vara utanför.
        Men talen ska in här på nåt sätt"""
 
-    points = 0
 
     def enter(self):
         print('Plus'.center(20, '='))
-#        svar = input('skriv vilket rum du vill in i :> ')
-#        return svar 
-
-        global points 
         fyll = int(input('skriv en siffra:> '))
+        return fyll
+
+    def addition(self):
+
+        print(self.enter.fyll)
+
+        global points
         print(type(fyll))
         points += fyll
         print(points)
