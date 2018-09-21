@@ -1,15 +1,21 @@
 import slump_matte
 from random import randint
 
-tal1 = randint(1,5)
-tal2 = randint(6, 10)
+points = 0
+errors = 0
+
+a = randint(6, 10)
+b = randint(1, 5)
 
 def valet():
+
+    global points, errors
+
     raknesatten = {
-            'plus': slump_matte.plus(tal1,tal2),
-            'minus': slump_matte.minus(tal1, tal2),
-            'gånger': slump_matte.multiplikation(tal1, tal2),
-            'delat': slump_matte.division(tal1, tal2)
+            'plus': slump_matte.plus(a, b),
+            'minus': slump_matte.minus(a, b),
+            'gånger': slump_matte.multiplikation(a, b),
+            'delat': slump_matte.division(a, b)
             }
 
     tecken = {
@@ -19,15 +25,23 @@ def valet():
             'delat': '/'
             }
 
-    räknevalet = input('välj ett räknesätt:> ')
-    print(f"{tal1} {tecken.get(räknevalet)} {tal2} blir {raknesatten.get(räknevalet)}")
+    while points < 3:
+        arithemtic = input('välj räknesätt:> ')
+        print(f'vad blir {a} {tecken.get(arithemtic)} {b} ?')
+        raknesatt = raknesatten.get(arithemtic)
+        if raknesatt == 'delat':
+            gissning = float(input('summa? '))
+        else:
+            gissning = int(input('summa? '))
 
+        if raknesatt == gissning:
+            print('rätt')
+            points += 1
+            print(points)
+        else:
+            print('fel')
+            errors += 1
+            print(errors)
+            print(raknesatt, 'raknesatt2') 
     
-def samman_rakning():
-     print(tal1, tal2)
-#     summering = input('vad blir det tillsammans? :> ')
-#     if summering == slump_matte.plus(tal1, tal2):
-#         print('korrekt')
- 
-samman_rakning()
 valet()
