@@ -5,7 +5,7 @@ import slumptalen2
 class Hall(object):
 
     def enter(self):
-        print('welcome') 
+        print('welcome (Hall)') 
         global svar 
         svar = input('skriv vilket rum du vill in i :> ')
         return svar 
@@ -48,43 +48,37 @@ class Plus(Hall):
 
     def enter(self):
         print('Plus'.center(20, '='))
-#        svar = input('skriv vilket rum du vill in i :> ')
-#        return svar
+        print('nu startar: slumptalen2.slump_matte()')
         slumptalen2.slump_matte('plus')
-#        c = slumptalen2.slump_matte('plus')
-#        if c < 2:
-#            print('finnished')
-#            break
-# print('finnished' går in till slumptalen, men inget händer
+        return 'hallen'
+
 class Minus(Hall):
 
     def enter(self):
         print('Minus'.center(20, '='))
-#        svar = input('skriv vilket rum du vill in i :> ')
-#        return svar
         slumptalen2.slump_matte('minus')
+        return 'hallen'
 
 class Multiply(Hall):
 
     def enter(self):
         print('Multiply'.center(20, '='))
-#        svar = input('skriv vilket rum du vill in i :> ')
-#        return svar 
         slumptalen2.slump_matte('gånger')
+        return 'hallen'
 
 class Divide(Hall):
 
     def enter(self):
         print('Divide'.center(20, '='))
-#        svar = input('skriv vilket rum du vill in i :> ')
-#        return svar 
         slumptalen2.slump_matte('gånger')
+        return 'hallen'
 
 class Eqvation(Hall):
 
     def enter(self):
         print('Eqvation i rutan') 
         print('Plus'.center(20, '='))
+        slumptalen2.slump_matte('gånger')
         return 'hallen'
 
 class Troll(Hall):

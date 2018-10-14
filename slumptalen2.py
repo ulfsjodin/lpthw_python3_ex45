@@ -8,11 +8,10 @@ c = 0
 try:
     
     def slump_matte(choise):
+        
         global c
-
         a = randint(6, 10)
         b = randint(1, 5)
-        
         
         def plus():
             summa = a + b
@@ -56,8 +55,10 @@ try:
             print(f"Nej, det var inte rätt. Det ska vara {utfall}, Försök igen!\n")
         print(f"Du har totalt: {c} poäng.\n")
             
-        while c < 3:
+        if c < 3:
             slump_matte(choise)
-
+        else:
+            c = 0
 except:
     print("Good bye!")
+    c = 0
