@@ -1,11 +1,8 @@
-#Här kommer ett nytt spel inom kort
 from sys import exit
 from textwrap import dedent
-from random import randint
-
+import slumptalen2
 
 class Hall(object):
-
 
     def enter(self):
         print('welcome') 
@@ -46,57 +43,49 @@ class Engine(object):
         current_scene.enter()
 
 points = 0
-
-#class Plus(Hall, Engine):
 class Plus(Hall):
-    """Nu ska här in uppgifter att lösa.
-       Ca tolv frågor varav tio bör vara rätt.
-       slumpgeneratorn får väl vara utanför.
-       Men talen ska in här på nåt sätt"""
 
 
     def enter(self):
         print('Plus'.center(20, '='))
-        fyll = int(input('skriv en siffra:> '))
-        return fyll
-
-    def addition(self):
-
-        print(self.enter.fyll)
-
-        global points
-        print(type(fyll))
-        points += fyll
-        print(points)
-        if points > 32:
-            return 'hallen'
-
+#        svar = input('skriv vilket rum du vill in i :> ')
+#        return svar
+        slumptalen2.slump_matte('plus')
+#        c = slumptalen2.slump_matte('plus')
+#        if c < 2:
+#            print('finnished')
+#            break
+# print('finnished' går in till slumptalen, men inget händer
 class Minus(Hall):
 
     def enter(self):
         print('Minus'.center(20, '='))
-        svar = input('skriv vilket rum du vill in i :> ')
-        return svar 
+#        svar = input('skriv vilket rum du vill in i :> ')
+#        return svar
+        slumptalen2.slump_matte('minus')
 
 class Multiply(Hall):
 
     def enter(self):
         print('Multiply'.center(20, '='))
-        svar = input('skriv vilket rum du vill in i :> ')
-        return svar 
+#        svar = input('skriv vilket rum du vill in i :> ')
+#        return svar 
+        slumptalen2.slump_matte('gånger')
 
 class Divide(Hall):
 
     def enter(self):
         print('Divide'.center(20, '='))
-        svar = input('skriv vilket rum du vill in i :> ')
-        return svar 
+#        svar = input('skriv vilket rum du vill in i :> ')
+#        return svar 
+        slumptalen2.slump_matte('gånger')
 
 class Eqvation(Hall):
 
     def enter(self):
         print('Eqvation i rutan') 
         print('Plus'.center(20, '='))
+        return 'hallen'
 
 class Troll(Hall):
 
@@ -135,3 +124,5 @@ a_map = Map('hallen')
 a_game = Engine(a_map)
 a_game.play()
 
+if __name__ == "__main__":
+    a_game.play()
